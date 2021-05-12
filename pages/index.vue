@@ -1,7 +1,12 @@
 <script>
 const jsonwebtoken = require('jsonwebtoken')
 const generateJWT = function generateJWT(payload, privateKey, algorithm) {
-  return jsonwebtoken.sign(payload, privateKey, { algorithm })
+  const plType = typeof payload
+  return jsonwebtoken.sign(
+    plType === 'string' ? JSON.parse(payload) : payload,
+    privateKey,
+    { algorithm }
+  )
 }
 
 export default {
@@ -68,7 +73,8 @@ jg/3747WSsf/zBTcHihTRBdAv6OmdhV4/dD5YBfLAkLrd+mX7iE=
       } catch (err) {
         this.jwt = null
         this.jwtError =
-          'ERROR generating JWT! The provided private key is likely invalid. See stacktrace below:\n\n' +
+          'ERROR generating JWT! The provided JSON payload or private key ' +
+          'is likely invalid. See stacktrace below:\n\n' +
           '=============================================================\n' +
           err.stack +
           '\n' +
