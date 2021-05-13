@@ -19,6 +19,8 @@ export default {
         aud: `https://ims-na1.adobelogin.com/c/asasdfasf`,
       },
       algorithm: 'RS256',
+
+      // Example private key copied from jwt.io, this is not a sensitive key
       privateKey: `-----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAnzyis1ZjfNB0bBgKFMSvvkTtwlvBsaJq7S5wA+kzeVOVpVWw
 kWdVha4s38XM/pa/yr47av7+z3VTmvDRyAHcaT92whREFpLv9cj5lTeJSibyr/Mr
