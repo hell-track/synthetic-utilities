@@ -1,14 +1,4 @@
 <script>
-const jsonwebtoken = require('jsonwebtoken')
-const generateJWT = function generateJWT(payload, privateKey, algorithm) {
-  const plType = typeof payload
-  return jsonwebtoken.sign(
-    plType === 'string' ? JSON.parse(payload) : payload,
-    privateKey,
-    { algorithm }
-  )
-}
-
 export default {
   data() {
     const defaultConfig = {
@@ -49,7 +39,7 @@ y18Ae9n7dHVueyslrb6weq7dTkYDi3iOYRW8HRkIQh06wEdbxt0shTzAJvvCQfrB
 jg/3747WSsf/zBTcHihTRBdAv6OmdhV4/dD5YBfLAkLrd+mX7iE=
 -----END RSA PRIVATE KEY-----`,
     }
-    const defaultJWT = generateJWT(
+    const defaultJWT = this.$generateJWT(
       defaultConfig.payload,
       defaultConfig.privateKey,
       defaultConfig.algorithm
@@ -67,7 +57,7 @@ jg/3747WSsf/zBTcHihTRBdAv6OmdhV4/dD5YBfLAkLrd+mX7iE=
   methods: {
     updateJWT: function updateJWT(e) {
       try {
-        this.jwt = generateJWT(
+        this.jwt = this.$generateJWT(
           this.jwtPayload,
           this.jwtPrivateKey,
           this.jwtAlgorithm
