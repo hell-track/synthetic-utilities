@@ -13,7 +13,7 @@ export default {
   data() {
     const defaultConfig = {
       payload: {
-        exp: 12 * 60 * 60,
+        exp: Math.floor(Date.now() / 1000 + 12 * 60 * 60),
         iss: 'asdfasdfasdf@AdobeOrg',
         sub: 'asdfasdfas@techacct.adobe.com',
         aud: `https://ims-na1.adobelogin.com/c/asasdfasf`,
